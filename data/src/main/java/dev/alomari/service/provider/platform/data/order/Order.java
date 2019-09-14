@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "SPP_ORDER")
+@Table(name = "SPA_ORDER")
 @Getter
 @Setter
 public class Order extends AuditingEntity {

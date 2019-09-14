@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="abdulmajeed alomari" id="1_create_role_table">
+        <createTable tableName="SPA_ROLE">
+            <column autoIncrement="true" name="PK_ID" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="NAME" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_ROLE"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_privilege_table">
+        <createTable tableName="SPA_PRIVILEGE">
+            <column autoIncrement="true" name="PK_ID" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="NAME" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_PRIVILEGE"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_role_privilege_table">
+        <createTable tableName="SPA_ROLE_PRIVILEGE">
+            <column autoIncrement="true" name="PK_ID" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="FK_ROLE_ID" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_ROLE_PRIVILEGE_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
+            </column>
+
+            <column name="FK_PRIVILEGE_ID" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_ROLE_PRIVILEGE_SPA_PRIVILEGE" references="SPA_PRIVILEGE(PK_ID)"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_ROLE_PRIVILEGE"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_user_table">
+        <createTable tableName="SPA_USER">
+            <column autoIncrement="true" name="PK_ID" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="FK_ROLE_ID" type="INT" defaultValue="0">
+                <constraints nullable="false" foreignKeyName="FK_SPA_USER_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
+            </column>
+
+            <column name="FIRST_NAME" type="NVARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="LAST_NAME" type="NVARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="EMAIL" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="PASSWORD" type="CHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="MOBILE_NUMBER" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTIVITY_STATUS" type="BOOLEAN" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_USER"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_address_table">
+        <createTable tableName="SPA_ADDRESS">
+            <column autoIncrement="true" name="PK_ID" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="FK_USER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_ADDRESS_SPA_USER" references="SPA_USER(PK_ID)"/>
+            </column>
+
+            <column name="LABEL" type="NVARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="STATUS" type="TINYINT" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CITY" type="NVARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="COUNTRY" type="NVARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DISTRICT" type="NVARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="STREET" type="NVARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="HOUSE_NUMBER" type="NVARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTIVITY_STATUS" type="BOOLEAN" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_ADDRESS"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_order_table">
+        <createTable tableName="SPA_ORDER">
+            <column autoIncrement="true" name="PK_ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="FK_USER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_ORDER_SPA_USER" references="SPA_USER(PK_ID)" />
+            </column>
+
+            <column name="FK_ADDRESS_ID" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="FK_SPA_ORDER_SPA_ADDRESS" references="SPA_ADDRESS(PK_ID)"/>
+            </column>
+
+            <column name="STATUS" type="TINYINT" defaultValue="1">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="COMMENT" type="NVARCHAR(255)" />
+
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTIVITY_STATUS" type="BOOLEAN" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_ORDER"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="abdulmajeed alomari" id="1_create_listing_table">
+        <createTable tableName="SPA_LISTING">
+            <column autoIncrement="true" name="PK_ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <!-- TODO: Does it have to be non-null? -->
+            <column name="FK_ORDER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_LISTING_SPA_ORDER" references="SPA_ORDER(PK_ID)"/>
+            </column>
+
+            <column name="NAME" type="NVARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DETAILS" type="NVARCHAR(255)"/>
+
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_LISTING"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_proposal_table">
+        <createTable tableName="SPA_PROPOSAL">
+            <column autoIncrement="true" name="PK_ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="FK_ORDER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_PROPOSAL_SPA_ORDER" references="SPA_ORDER(PK_ID)"/>
+            </column>
+
+            <column name="STATUS" type="TINYINT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="PRICE" type="CURRENCY">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="COMMENT" type="NVARCHAR(255)"/>
+
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_PROPOSAL"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_payment_table">
+        <createTable tableName="SPA_PAYMENT">
+            <column autoIncrement="true" name="PK_ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="FK_PROPOSAL_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_PAYMENT_SPA_PROPOSAL" references="SPA_PROPOSAL(PK_ID)" />
+            </column>
+
+            <column name="STATUS" type="TINYINT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="METHOD" type="TINYINT"/>
+
+            <column name="BANK" type="VARCHAR(32)"/>
+
+            <column name="REFERENCE" type="VARCHAR(32)"/>
+
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_PAYMENT"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
