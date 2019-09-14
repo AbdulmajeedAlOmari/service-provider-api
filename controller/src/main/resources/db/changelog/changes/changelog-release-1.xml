@@ -63,7 +63,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="FK_ROLE_ID" type="INT" defaultValue="0">
+            <column name="FK_ROLE_ID" type="INT" defaultValue="1">
                 <constraints nullable="false" foreignKeyName="FK_SPA_USER_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
             </column>
 
@@ -302,4 +302,27 @@
         </rollback>
     </changeSet>
 
+    <changeSet author="abdulmajeed alomari" id="1_insert_into_role_table">
+        <sqlFile path="./sql/1_insert_into_role_table.sql" relativeToChangelogFile="true"/>
+
+        <rollback>
+            <delete tableName="SPA_ROLE"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="abdulmajeed alomari" id="1_insert_into_privilege_table">
+        <sqlFile path="./sql/1_insert_into_privilege_table.sql" relativeToChangelogFile="true"/>
+
+        <rollback>
+            <delete tableName="SPA_PRIVILEGE"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="abdulmajeed alomari" id="1_map_between_role_and_privilege">
+        <sqlFile path="./sql/1_map_between_role_and_privilege.sql" relativeToChangelogFile="true"/>
+
+        <rollback>
+            <delete tableName=""/>
+        </rollback>
+    </changeSet>
 </databaseChangeLog>

@@ -22,17 +22,18 @@ public class User extends ActivatableEntity {
     @Column(name = "PK_ID")
     private Long id;
 
-    @Column(name = "FK_ROLE_ID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "FK_ROLE_ID", nullable = false)
     private Role role;
 
     @NotNull
     @NotBlank
-    @Column(name = "LAST_NAME")
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
     @NotNull
     @NotBlank
-    @Column(name = "FK_ROLE_ID")
+    @Column(name = "LAST_NAME")
     private String lastName;
 
     @NotNull
