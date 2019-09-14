@@ -6,7 +6,7 @@
         <groupId>dev.alomari</groupId>
         <artifactId>service-provider-platform</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>dev.alomari.service.provider.platform</groupId>
     <artifactId>core</artifactId>
