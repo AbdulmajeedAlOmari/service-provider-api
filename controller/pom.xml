@@ -6,27 +6,23 @@
         <groupId>dev.alomari</groupId>
         <artifactId>service-provider-platform</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>dev.alomari.service.provider.platform</groupId>
     <artifactId>contoller</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>contoller</name>
+    <packaging>jar</packaging>
     <description>A module that contains resful controllers for service provider platform</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <dependency>
@@ -38,13 +34,6 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-maven-plugin</artifactId>
-            <scope>runtime</scope>
-            <version>3.4.1</version>
         </dependency>
 
         <dependency>
