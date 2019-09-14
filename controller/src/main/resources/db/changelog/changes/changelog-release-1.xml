@@ -40,10 +40,6 @@
 
     <changeSet author="abdulmajeed alomari" id="1_create_role_privilege_table">
         <createTable tableName="SPA_ROLE_PRIVILEGE">
-            <column autoIncrement="true" name="PK_ID" type="INT">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-
             <column name="FK_ROLE_ID" type="INT">
                 <constraints nullable="false" foreignKeyName="FK_SPA_ROLE_PRIVILEGE_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
             </column>
@@ -52,6 +48,8 @@
                 <constraints nullable="false" foreignKeyName="FK_SPA_ROLE_PRIVILEGE_SPA_PRIVILEGE" references="SPA_PRIVILEGE(PK_ID)"/>
             </column>
         </createTable>
+
+        <addPrimaryKey tableName="SPA_ROLE_PRIVILEGE" columnNames="FK_ROLE_ID, FK_PRIVILEGE_ID" constraintName="PK_SPA_ROLE_PRIVILEGE"/>
 
         <rollback>
             <dropTable tableName="SPA_ROLE_PRIVILEGE"/>
