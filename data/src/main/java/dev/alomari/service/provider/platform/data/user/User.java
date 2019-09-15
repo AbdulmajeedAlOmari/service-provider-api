@@ -10,6 +10,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name = "SPA_USER")
@@ -22,9 +23,13 @@ public class User extends ActivatableEntity {
     @Column(name = "PK_ID")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "FK_ROLE_ID", nullable = false)
-    private Role role;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "SPA_USER_ROLE",
+            joinColumns = @JoinColumn(name = "FK_USER_ID", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "FK_ROLE_ID", nullable = false)
+    )
+    private Set<Role> roles;
 
     @NotNull
     @NotBlank

@@ -63,10 +63,6 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="FK_ROLE_ID" type="INT" defaultValue="1">
-                <constraints nullable="false" foreignKeyName="FK_SPA_USER_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
-            </column>
-
             <column name="FIRST_NAME" type="NVARCHAR(128)">
                 <constraints nullable="false"/>
             </column>
@@ -102,6 +98,26 @@
 
         <rollback>
             <dropTable tableName="SPA_USER"/>
+        </rollback>
+    </changeSet>
+
+
+    <!-- ManyToMany (User + Role) -->
+    <changeSet author="abdulmajeed alomari" id="1_create_user_role_table">
+        <createTable tableName="SPA_USER_ROLE">
+            <column name="FK_USER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_USER_ROLE_SPA_USER" references="SPA_USER(PK_ID)"/>
+            </column>
+
+            <column name="FK_ROLE_ID" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_USER_ROLE_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="SPA_USER_ROLE" columnNames="FK_USER_ID, FK_ROLE_ID" constraintName="PK_SPA_USER_ROLE"/>
+
+        <rollback>
+            <dropTable tableName="SPA_USER_ROLE"/>
         </rollback>
     </changeSet>
 
