@@ -7,8 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
+
 
 @Entity
 @Table(name = "SPA_ORDER")
@@ -18,10 +17,7 @@ public class Order extends AuditingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PK_ID")
     @JsonView({Views.List.class, Views.View.class})
     private Long id;
-
-    @NotNull
-    @JsonView({Views.List.class, Views.View.class})
-    private BigDecimal price;
 }

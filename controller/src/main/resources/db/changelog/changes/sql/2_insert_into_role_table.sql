@@ -1,0 +1,11 @@
+INSERT INTO SPA_ROLE (NAME_EN, NAME_AR) VALUES ('Customer', N'عميل');
+
+INSERT INTO SPA_ROLE (NAME_EN, NAME_AR) VALUES ('Moderator', N'مشرف');
+
+INSERT INTO SPA_ROLE (NAME_EN, NAME_AR) VALUES ('Content Manager', N'محرّر محتوى');
+
+INSERT INTO SPA_ROLE (NAME_EN, NAME_AR) VALUES ('Admin', N'مدير');
+
+INSERT INTO SPA_ROLE (NAME_EN, NAME_AR) VALUES ('Tester', N'مختبر');
+
+INSERT INTO SPA_ROLE (NAME_EN, NAME_AR) VALUES ('Developer', N'مطور');

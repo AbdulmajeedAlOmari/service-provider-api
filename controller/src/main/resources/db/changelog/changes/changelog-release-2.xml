@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="abdulmajeed alomari" id="2_insert_into_role_table">
+        <sqlFile path="./sql/2_insert_into_role_table.sql" relativeToChangelogFile="true"/>
+
+        <rollback>
+            <delete tableName="SPA_ROLE"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="abdulmajeed alomari" id="2_insert_into_privilege_category_table">
+        <sqlFile path="./sql/2_insert_into_privilege_category_table.sql" relativeToChangelogFile="true"/>
+
+        <rollback>
+            <delete tableName="SPA_PRIVILEGE_CATEGORY"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="abdulmajeed alomari" id="2_insert_into_privilege_table">
+        <sqlFile path="./sql/2_insert_into_privilege_table.sql" relativeToChangelogFile="true"/>
+
+        <rollback>
+            <delete tableName="SPA_PRIVILEGE"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="abdulmajeed alomari" id="2_map_between_role_and_privilege">
+        <sqlFile path="./sql/2_map_between_role_and_privilege.sql" relativeToChangelogFile="true"/>
+
+        <rollback>
+            <delete tableName="SPA_ROLE_PRIVILEGE"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

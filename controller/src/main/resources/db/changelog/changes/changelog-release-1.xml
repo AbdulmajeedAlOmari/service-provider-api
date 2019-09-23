@@ -10,13 +10,46 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="NAME" type="VARCHAR(32)">
-                <constraints nullable="false"/>
+            <column name="NAME_EN" type="VARCHAR(64)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+
+            <column name="NAME_AR" type="NVARCHAR(64)">
+                <constraints unique="true" nullable="false"/>
             </column>
         </createTable>
 
         <rollback>
             <dropTable tableName="SPA_ROLE"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet author="abdulmajeed alomari" id="1_create_privilege_category_table">
+        <createTable tableName="SPA_PRIVILEGE_CATEGORY">
+            <column autoIncrement="true" name="PK_ID" type="INT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="NAME_EN" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="NAME_AR" type="NVARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DESCRIPTION_EN" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="DESCRIPTION_AR" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="SPA_PRIVILEGE_CATEGORY"/>
         </rollback>
     </changeSet>
 
@@ -27,7 +60,19 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="NAME" type="VARCHAR(64)">
+            <column name="FK_PRIVILEGE_CATEGORY_ID" type="INT">
+                <constraints nullable="false" foreignKeyName="FK_SPA_PRIVILEGE_SPA_PRIVILEGE_CATEGORY" references="SPA_PRIVILEGE_CATEGORY(PK_ID)"/>
+            </column>
+
+            <column name="ACTION" type="VARCHAR(32)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+
+            <column name="NAME_EN" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="NAME_AR" type="NVARCHAR(64)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -318,27 +363,4 @@
         </rollback>
     </changeSet>
 
-    <changeSet author="abdulmajeed alomari" id="1_insert_into_role_table">
-        <sqlFile path="./sql/1_insert_into_role_table.sql" relativeToChangelogFile="true"/>
-
-        <rollback>
-            <delete tableName="SPA_ROLE"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet author="abdulmajeed alomari" id="1_insert_into_privilege_table">
-        <sqlFile path="./sql/1_insert_into_privilege_table.sql" relativeToChangelogFile="true"/>
-
-        <rollback>
-            <delete tableName="SPA_PRIVILEGE"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet author="abdulmajeed alomari" id="1_map_between_role_and_privilege">
-        <sqlFile path="./sql/1_map_between_role_and_privilege.sql" relativeToChangelogFile="true"/>
-
-        <rollback>
-            <delete tableName=""/>
-        </rollback>
-    </changeSet>
 </databaseChangeLog>
