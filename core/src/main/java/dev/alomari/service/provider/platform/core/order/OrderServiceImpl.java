@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order newOrder(Order order) {
+    public Order addOrder(Order order) {
         // TODO: Return order from repository instead of null
         return orderRepository.save(order);
     }

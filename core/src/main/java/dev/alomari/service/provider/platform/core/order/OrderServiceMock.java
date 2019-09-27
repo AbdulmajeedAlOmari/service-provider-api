@@ -17,7 +17,7 @@ public class OrderServiceMock implements OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order newOrder(Order order) {
+    public Order addOrder(Order order) {
         order.setId(3134L);
         return order;
     }

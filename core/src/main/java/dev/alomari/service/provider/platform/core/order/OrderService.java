@@ -4,5 +4,5 @@ import dev.alomari.service.provider.platform.data.order.Order;
 import org.springframework.stereotype.Service;
 
 public interface OrderService {
-    Order newOrder(Order order);
+    Order addOrder(Order order);
 }
