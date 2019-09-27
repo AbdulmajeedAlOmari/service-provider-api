@@ -3,12 +3,11 @@ package dev.alomari.service.provider.platform.controller.controllers;
 import dev.alomari.service.provider.platform.core.order.OrderService;
 import dev.alomari.service.provider.platform.data.order.Order;
 import dev.alomari.service.provider.platform.utility.constants.Routes;
+import dev.alomari.service.provider.platform.utility.exceptions.ServiceProviderError;
+import dev.alomari.service.provider.platform.utility.exceptions.ServiceProviderException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(Routes.ORDER_ROUTE_V1)
@@ -21,8 +20,18 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<Order> addOrder(@RequestBody Order order) {
-        return ResponseEntity.ok(orderService.addOrder(order));
+        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+    }
+
+    @GetMapping
+    public ResponseEntity<Order> listOrders(Order order) {
+        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+    }
+
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Order> viewOrder(@PathVariable Long orderId) {
+        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
     }
 }

@@ -6,6 +6,13 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum ServiceProviderError {
     //formatter@off
+    NOT_IMPLEMENTED(
+            -2,
+            "service.provider.api.endpoint.not.implemented",
+            "Endpoint is not implemented yet",
+            HttpStatus.NOT_IMPLEMENTED
+    ),
+
     GENERAL_INTERNAL_ERROR(
             -1,
             "service.provider.api.general.internal.error",
@@ -36,6 +43,7 @@ public enum ServiceProviderError {
 
     //formatter@on
     ;
+
     private int code;
     private String key;
     private String message;
