@@ -31,10 +31,10 @@ INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (2, 'ORDERS:LIST', 'List current user orders', N'عرض قائمة الطلبات للمستخدم الحالي');
 
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
-VALUES (2, 'ORDERS:EDIT', 'Edit order details', 'تعديل تفاصيل الطلب'N);
+VALUES (2, 'ORDERS:EDIT', 'Edit order details', N'تعديل تفاصيل الطلب');
 
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
-VALUES (2, 'ORDERS:VIEWALL', 'View the details any order', 'عرض تفاصيل أي طلب'N);
+VALUES (2, 'ORDERS:VIEWALL', 'View the details any order', N'عرض تفاصيل أي طلب');
 
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (2, 'ORDERS:LISTALL', 'List all orders', N'عرض قائمة بجميع الطلبات');
@@ -68,9 +68,6 @@ VALUES (3, 'LISTINGS:EDITALL', 'Edit any user listings', N'تعديل قائمة
 
 /* Proposals */
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
-VALUES (4, 'PROPOSALS:ADD', 'Add proposal to any user listings', N'إضافة عرض لأي قاثمة من الطلبات للمستخدم');
-
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (4, 'PROPOSALS:LIST', 'List all proposals for current user', N'عرض قائمة الطلبات الخاصة بالمستخدم الحالي');
 
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
@@ -78,6 +75,9 @@ VALUES (4, 'PROPOSALS:VIEW', 'View a proposal for current user', N'عرض تفا
 
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (4, 'PROPOSALS:REPLY', 'Accept or reject a proposal for current user', N'قبول أو رفض أي عرض مقدم على الطلبات الخاصة بالمستخدم الحالي');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:ADDALL', 'Add proposal to any user listings', N'إضافة عرض لأي قاثمة من الطلبات للمستخدم');
 
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (4, 'PROPOSALS:LISTALL', 'List all proposals for any user', N'عرض قائمة الطلبات المقدمة لكل المستخدمين');
@@ -114,4 +114,4 @@ VALUES (5, 'PAYMENTS:MANAGEALL', 'Manage any payment from any user', N'إدار�
 
 /* Roles */
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
-VALUES (6, 'ROLES:PROMOTE', 'Promote a user to another role', N'ترقية دور أي مستخدم الى دور اخر');
+VALUES (6, 'ROLES:PROMOTEALL', 'Promote a user to another role', N'ترقية دور أي مستخدم الى دور اخر');
