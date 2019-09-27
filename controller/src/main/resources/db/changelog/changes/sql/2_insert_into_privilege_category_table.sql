@@ -17,3 +17,7 @@ VALUES ('Proposals', N'الإقتراحات', 'Proposals in orders related privi
 /* Payments */
 INSERT INTO SPA_PRIVILEGE_CATEGORY ( NAME_EN, NAME_AR, DESCRIPTION_EN, DESCRIPTION_AR )
 VALUES ('Payments', N'المدفوعات', 'Payment related privileges', N'الصلاحيات المتعلقة بالمدفوعات');
+
+/* Roles */
+INSERT INTO SPA_PRIVILEGE_CATEGORY ( NAME_EN, NAME_AR, DESCRIPTION_EN, DESCRIPTION_AR )
+VALUES ('Roles', N'الأدوار', 'Roles related privileges', N'الصلاحيات المتعلقة بالأدوار');

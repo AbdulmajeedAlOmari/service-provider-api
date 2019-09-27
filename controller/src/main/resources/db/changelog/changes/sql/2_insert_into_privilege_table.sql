@@ -65,17 +65,53 @@ VALUES (3, 'LISTINGS:LISTALL', 'List any user listings', N'عرض قائمة ا�
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (3, 'LISTINGS:EDITALL', 'Edit any user listings', N'تعديل قائمة العناصر لأي مستخدم');
 
--- TODO: Fill in correct privileges for Proposals and Payments
-/* Proposals */
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PROPOSALS:ADD');
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PROPOSALS:LIST');
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PROPOSALS:VIEW');
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PROPOSALS:REPLY');
 
+/* Proposals */
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:ADD', 'Add proposal to any user listings', N'إضافة عرض لأي قاثمة من الطلبات للمستخدم');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:LIST', 'List all proposals for current user', N'عرض قائمة الطلبات الخاصة بالمستخدم الحالي');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:VIEW', 'View a proposal for current user', N'عرض تفاصيل قائمة طلب الخاصة بالمستخدم الحالي');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:REPLY', 'Accept or reject a proposal for current user', N'قبول أو رفض أي عرض مقدم على الطلبات الخاصة بالمستخدم الحالي');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:LISTALL', 'List all proposals for any user', N'عرض قائمة الطلبات المقدمة لكل المستخدمين');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:VIEWALL', 'View a proposal for any user', N'عرض تفاصيل قائمة طلب مقدم لأي مستخدم');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (4, 'PROPOSALS:CANCELALL', 'Cancel any proposal provided for any user', N'إلغاء أي طلب مقدم لأي مستخدم');
 
 
 /* Payments */
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PAYMENTS:ADD');
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PAYMENTS:LIST');
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PAYMENTS:VIEW');
-INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR ) VALUES ('PAYMENTS:MANAGE');
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (5, 'PAYMENTS:ADD', 'Add payment information for current user', N'إضافة تفاصيل الدفع للمستخدم الحالي');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (5, 'PAYMENTS:LIST', 'List previous list of payments for current user', N'عرض قائمة المدفوعات للمستخدم الحالي');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (5, 'PAYMENTS:VIEW', 'View details of a payment for current user', N'عرض تفاصيل الدفغ للمستخدم الحالي');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (5, 'PAYMENTS:ADDALL', 'Add payment information for any user', N'إضافة تفاصيل الدفع لأي مستخدم');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (5, 'PAYMENTS:LISTALL', 'List all payments from any user', N'عرض قائمة المدفوعات لأي مستخدم');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (5, 'PAYMENTS:VIEWALL', 'View details of any payment from any user', N'عرض تفاصيل الدفع لأي مستخدم');
+
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (5, 'PAYMENTS:MANAGEALL', 'Manage any payment from any user', N'إدارة المدفوعات لأي مستخدم');
+
+
+/* Roles */
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (6, 'ROLES:PROMOTE', 'Promote a user to another role', N'ترقية دور أي مستخدم الى دور اخر');
