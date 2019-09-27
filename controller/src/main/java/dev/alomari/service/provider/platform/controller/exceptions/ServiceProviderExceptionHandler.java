@@ -1,6 +1,5 @@
 package dev.alomari.service.provider.platform.controller.exceptions;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.alomari.service.provider.platform.utility.exceptions.ServiceProviderError;
 import dev.alomari.service.provider.platform.utility.exceptions.ServiceProviderException;
 import org.springframework.http.HttpHeaders;
