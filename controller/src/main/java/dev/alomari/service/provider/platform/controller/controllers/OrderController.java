@@ -22,7 +22,7 @@ public class OrderController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Order> newOrder(@RequestBody Order order) {
-        return ResponseEntity.ok(orderService.newOrder(order));
+    public ResponseEntity<Order> addOrder(@RequestBody Order order) {
+        return ResponseEntity.ok(orderService.addOrder(order));
     }
 }
