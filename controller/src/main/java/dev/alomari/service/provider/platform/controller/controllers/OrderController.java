@@ -34,4 +34,24 @@ public class OrderController {
     public ResponseEntity<Order> viewOrder(@PathVariable Long orderId) {
         throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
     }
+
+    @PutMapping("/{orderId}/accept")
+    public ResponseEntity<Order> acceptOrder(@PathVariable Long orderId) {
+        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+    }
+
+    @PutMapping("/{orderId}/reject")
+    public ResponseEntity<Order> rejectOrder(@PathVariable Long orderId) {
+        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+    }
+
+    @PutMapping("/{orderId}/cancel")
+    public ResponseEntity<Order> cancelOrder(@PathVariable Long orderId) {
+        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+    }
+
+    @PutMapping("/{orderId}/close")
+    public ResponseEntity<Order> closeOrder(@PathVariable Long orderId) {
+        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+    }
 }
