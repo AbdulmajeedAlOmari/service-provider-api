@@ -1,12 +1,11 @@
-package dev.alomari.service.provider.platform.data.privilege;
+package dev.alomari.service.provider.platform.data.security.privilege;
 
-import dev.alomari.service.provider.platform.data.role.Role;
+import dev.alomari.service.provider.platform.data.security.role.Role;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -18,9 +17,8 @@ public class Privilege {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
-    private Integer id;
+    private Short id;
 
-    @NotNull
     @NotBlank
     @Column(name = "NAME")
     private String name;

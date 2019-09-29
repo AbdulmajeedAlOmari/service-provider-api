@@ -1,12 +1,11 @@
-package dev.alomari.service.provider.platform.data.role;
+package dev.alomari.service.provider.platform.data.security.role;
 
-import dev.alomari.service.provider.platform.data.privilege.Privilege;
+import dev.alomari.service.provider.platform.data.security.privilege.Privilege;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -18,12 +17,15 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
-    private Integer id;
+    private Short id;
 
-    @NotNull
     @NotBlank
-    @Column(name = "NAME")
-    private String name;
+    @Column(name = "NAME_EN")
+    private String nameEn;
+
+    @NotBlank
+    @Column(name = "NAME_AR")
+    private String nameAr;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

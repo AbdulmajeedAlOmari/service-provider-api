@@ -6,7 +6,7 @@
 
     <changeSet author="abdulmajeed alomari" id="1_create_role_table">
         <createTable tableName="SPA_ROLE">
-            <column autoIncrement="true" name="PK_ID" type="INT">
+            <column autoIncrement="true" name="PK_ID" type="SMALLINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -27,7 +27,7 @@
 
     <changeSet author="abdulmajeed alomari" id="1_create_privilege_category_table">
         <createTable tableName="SPA_PRIVILEGE_CATEGORY">
-            <column autoIncrement="true" name="PK_ID" type="INT">
+            <column autoIncrement="true" name="PK_ID" type="SMALLINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -56,11 +56,11 @@
 
     <changeSet author="abdulmajeed alomari" id="1_create_privilege_table">
         <createTable tableName="SPA_PRIVILEGE">
-            <column autoIncrement="true" name="PK_ID" type="INT">
+            <column autoIncrement="true" name="PK_ID" type="SMALLINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="FK_PRIVILEGE_CATEGORY_ID" type="INT">
+            <column name="FK_PRIVILEGE_CATEGORY_ID" type="SMALLINT">
                 <constraints nullable="false" foreignKeyName="FK_SPA_PRIVILEGE_SPA_PRIVILEGE_CATEGORY" references="SPA_PRIVILEGE_CATEGORY(PK_ID)"/>
             </column>
 
@@ -85,11 +85,11 @@
 
     <changeSet author="abdulmajeed alomari" id="1_create_role_privilege_table">
         <createTable tableName="SPA_ROLE_PRIVILEGE">
-            <column name="FK_ROLE_ID" type="INT">
+            <column name="FK_ROLE_ID" type="SMALLINT">
                 <constraints nullable="false" foreignKeyName="FK_SPA_ROLE_PRIVILEGE_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
             </column>
 
-            <column name="FK_PRIVILEGE_ID" type="INT">
+            <column name="FK_PRIVILEGE_ID" type="SMALLINT">
                 <constraints nullable="false" foreignKeyName="FK_SPA_ROLE_PRIVILEGE_SPA_PRIVILEGE" references="SPA_PRIVILEGE(PK_ID)"/>
             </column>
         </createTable>
@@ -154,7 +154,7 @@
                 <constraints nullable="false" foreignKeyName="FK_SPA_USER_ROLE_SPA_USER" references="SPA_USER(PK_ID)"/>
             </column>
 
-            <column name="FK_ROLE_ID" type="INT">
+            <column name="FK_ROLE_ID" type="SMALLINT">
                 <constraints nullable="false" foreignKeyName="FK_SPA_USER_ROLE_SPA_ROLE" references="SPA_ROLE(PK_ID)"/>
             </column>
         </createTable>
@@ -216,6 +216,18 @@
             <column name="ACTIVITY_STATUS" type="BOOLEAN" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
+
+            <column name="CREATED_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <rollback>
@@ -268,7 +280,6 @@
                 <constraints primaryKey="true"/>
             </column>
 
-            <!-- TODO: Does it have to be non-null? -->
             <column name="FK_ORDER_ID" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="FK_SPA_LISTING_SPA_ORDER" references="SPA_ORDER(PK_ID)"/>
             </column>
@@ -284,6 +295,18 @@
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CREATED_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_AT" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -312,13 +335,25 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="COMMENT" type="NVARCHAR(255)"/>
+            <column name="NOTE" type="NVARCHAR(255)"/>
 
             <column name="CREATED_AT" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="CREATED_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_AT" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -356,7 +391,26 @@
             <column name="UPDATED_AT" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
+
+            <column name="CREATED_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_AT" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
+
+        <!-- Make relation  ship between proposal and payment OneToOne -->
+        <addColumn tableName="SPA_PROPOSAL">
+            <column name="FK_PAYMENT_ID" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="FK_SPA_PROPOSAL_SPA_PAYMENT" references="SPA_PAYMENT(PK_ID)"/>
+            </column>
+        </addColumn>
 
         <rollback>
             <dropTable tableName="SPA_PAYMENT"/>

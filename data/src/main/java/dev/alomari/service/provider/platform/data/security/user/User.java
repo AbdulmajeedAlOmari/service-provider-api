@@ -1,7 +1,8 @@
-package dev.alomari.service.provider.platform.data.user;
+package dev.alomari.service.provider.platform.data.security.user;
 
+import dev.alomari.service.provider.platform.data.address.Address;
 import dev.alomari.service.provider.platform.data.common.ActivatableEntity;
-import dev.alomari.service.provider.platform.data.role.Role;
+import dev.alomari.service.provider.platform.data.security.role.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,20 +24,10 @@ public class User extends ActivatableEntity {
     @Column(name = "PK_ID")
     private Long id;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "SPA_USER_ROLE",
-            joinColumns = @JoinColumn(name = "FK_USER_ID", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "FK_ROLE_ID", nullable = false)
-    )
-    private Set<Role> roles;
-
-    @NotNull
     @NotBlank
     @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @NotNull
     @NotBlank
     @Column(name = "LAST_NAME")
     private String lastName;
@@ -55,4 +46,15 @@ public class User extends ActivatableEntity {
     @Size(min = 9, max = 50)
     @Column(name = "MOBILE_NUMBER")
     private String mobileNumber;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "SPA_USER_ROLE",
+            joinColumns = @JoinColumn(name = "FK_USER_ID", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "FK_ROLE_ID", nullable = false)
+    )
+    private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Address> addresses;
 }

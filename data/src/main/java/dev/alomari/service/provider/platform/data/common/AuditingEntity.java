@@ -1,13 +1,15 @@
 package dev.alomari.service.provider.platform.data.common;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.Column;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 public class AuditingEntity extends BaseEntity {
 
     @Nullable
