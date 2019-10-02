@@ -264,7 +264,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="ACTIVITY_STATUS" type="BOOLEAN" defaultValue="0">
+            <column name="CREATED_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ACTION_TAKEN_AT" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
         </createTable>
