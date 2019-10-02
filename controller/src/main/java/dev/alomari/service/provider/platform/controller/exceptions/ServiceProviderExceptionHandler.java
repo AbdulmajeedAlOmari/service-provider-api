@@ -5,6 +5,7 @@ import dev.alomari.service.provider.platform.utility.exceptions.ServiceProviderE
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,7 +22,6 @@ public class ServiceProviderExceptionHandler extends ResponseEntityExceptionHand
     protected ResponseEntity<Object> handleServiceProviderException(ServiceProviderException exception) {
         return ResponseEntity.status(exception.getHttpStatus()).body(exception);
     }
-
 
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {

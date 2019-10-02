@@ -1,7 +1,9 @@
 package dev.alomari.service.provider.platform.data.security.user;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import dev.alomari.service.provider.platform.data.address.Address;
-import dev.alomari.service.provider.platform.data.common.ActivatableEntity;
+import dev.alomari.service.provider.platform.data.common.entities.ActivatableEntity;
+import dev.alomari.service.provider.platform.data.common.jsonviews.View;
 import dev.alomari.service.provider.platform.data.security.role.Role;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,19 +24,23 @@ public class User extends ActivatableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
+    @JsonView({View.SimpleView.class})
     private Long id;
 
     @NotBlank
     @Column(name = "FIRST_NAME")
+    @JsonView({ View.SimpleView.class })
     private String firstName;
 
     @NotBlank
     @Column(name = "LAST_NAME")
+    @JsonView({ View.SimpleView.class })
     private String lastName;
 
     @NotNull
     @Email
     @Column(name = "EMAIL")
+    @JsonView({ View.SimpleView.class })
     private String email;
 
     @NotNull

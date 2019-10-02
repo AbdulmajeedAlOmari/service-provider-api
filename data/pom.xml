@@ -19,12 +19,4 @@
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>dev.alomari.service.provider.platform</groupId>
-            <artifactId>utility</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
-
 </project>

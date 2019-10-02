@@ -1,4 +1,4 @@
-package dev.alomari.service.provider.platform.data.common;
+package dev.alomari.service.provider.platform.data.common.entities;
 
 import lombok.Setter;
 import lombok.Getter;

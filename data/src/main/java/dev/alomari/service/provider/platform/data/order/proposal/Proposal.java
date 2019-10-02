@@ -1,6 +1,6 @@
 package dev.alomari.service.provider.platform.data.order.proposal;
 
-import dev.alomari.service.provider.platform.data.common.AuditingEntity;
+import dev.alomari.service.provider.platform.data.common.entities.AuditingEntity;
 import dev.alomari.service.provider.platform.data.order.Order;
 import dev.alomari.service.provider.platform.data.order.payment.Payment;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package dev.alomari.service.provider.platform.data.address;
 
-import dev.alomari.service.provider.platform.data.common.AuditingEntity;
+import dev.alomari.service.provider.platform.data.common.entities.AuditingEntity;
 import dev.alomari.service.provider.platform.data.security.user.User;
 import lombok.Getter;
 import lombok.Setter;

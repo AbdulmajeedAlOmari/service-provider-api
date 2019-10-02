@@ -41,8 +41,23 @@ public enum ServiceProviderError {
             HttpStatus.BAD_REQUEST
     ),
 
-    //formatter@on
-    ;
+    AUTHENTICATION_FAILURE(
+            3,
+            "service.provider.api.authentication.failure",
+            "Credentials are incorrect",
+            HttpStatus.UNAUTHORIZED),
+
+    NO_DATA_FOUND(
+            4,
+            "service.provider.api.no.data.found",
+            "No data were found",
+            HttpStatus.NOT_FOUND),
+
+    EMAIL_ALREADY_REGISTERED(
+            5,
+            "service.provider.api.email.already.registered",
+            "Email already registered",
+            HttpStatus.FORBIDDEN);
 
     private int code;
     private String key;

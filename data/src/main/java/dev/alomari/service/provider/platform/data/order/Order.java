@@ -1,11 +1,9 @@
 package dev.alomari.service.provider.platform.data.order;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import dev.alomari.service.provider.platform.data.address.Address;
-import dev.alomari.service.provider.platform.data.common.AuditingEntity;
+import dev.alomari.service.provider.platform.data.common.entities.AuditingEntity;
 import dev.alomari.service.provider.platform.data.order.listing.Listing;
 import dev.alomari.service.provider.platform.data.security.user.User;
-import dev.alomari.service.provider.platform.utility.constants.JsonViews;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
@@ -25,7 +23,6 @@ public class Order extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
-    @JsonView({JsonViews.List.class, JsonViews.View.class})
     private Long id;
 
     @NotNull
