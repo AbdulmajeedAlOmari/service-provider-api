@@ -23,7 +23,7 @@ public class Privilege implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
-    @JsonView({ g })
+    @JsonView({ View.AuthView.class })
     private Short id;
 
     @NotNull
