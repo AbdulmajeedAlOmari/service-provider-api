@@ -1,6 +1,8 @@
 package dev.alomari.service.provider.platform.data.security.privilege;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import dev.alomari.service.provider.platform.data.common.jsonviews.View;
 import dev.alomari.service.provider.platform.data.security.privilegeCategory.PrivilegeCategory;
 import dev.alomari.service.provider.platform.data.security.role.Role;
 import lombok.Getter;
@@ -21,6 +23,7 @@ public class Privilege implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
+    @JsonView({ g })
     private Short id;
 
     @NotNull
@@ -30,14 +33,17 @@ public class Privilege implements GrantedAuthority {
 
     @NotBlank
     @Column(name = "ACTION")
+    @JsonView({ View.AuthView.class })
     private String action;
 
     @NotBlank
     @Column(name = "NAME_AR")
+    @JsonView({ View.AuthView.class })
     private String arName;
 
     @NotBlank
     @Column(name = "NAME_EN")
+    @JsonView({ View.AuthView.class })
     private String enName;
 
     @JsonIgnore

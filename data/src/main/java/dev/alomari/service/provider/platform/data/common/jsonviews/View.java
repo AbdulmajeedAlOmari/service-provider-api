@@ -4,4 +4,5 @@ public class View {
 
     public interface SimpleView {}
     public interface DetailedView {}
+    public interface AuthView {}
 }

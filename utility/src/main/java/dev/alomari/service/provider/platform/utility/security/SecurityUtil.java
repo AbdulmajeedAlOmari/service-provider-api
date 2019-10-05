@@ -2,6 +2,7 @@ package dev.alomari.service.provider.platform.utility.security;
 
 import dev.alomari.service.provider.platform.data.security.privilege.Privilege;
 import dev.alomari.service.provider.platform.data.security.role.Role;
+import dev.alomari.service.provider.platform.data.security.user.MyUsernamePasswordAuthenticationToken;
 import dev.alomari.service.provider.platform.data.security.user.User;
 import dev.alomari.service.provider.platform.data.security.user.UserDetailsImpl;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class SecurityUtil {
     public static Authentication signInUser(User user) {
         List<GrantedAuthority> roles = getAuthorities(user);
         UserDetailsImpl springSecurityUser = new UserDetailsImpl(user, roles);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(springSecurityUser, user.getPassword(), roles);
+        Authentication authentication = new MyUsernamePasswordAuthenticationToken(springSecurityUser, user.getPassword(), roles);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return authentication;
     }

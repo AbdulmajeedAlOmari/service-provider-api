@@ -24,23 +24,23 @@ public class User extends ActivatableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
-    @JsonView({View.SimpleView.class})
+    @JsonView({ View.AuthView.class })
     private Long id;
 
     @NotBlank
     @Column(name = "FIRST_NAME")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.AuthView.class })
     private String firstName;
 
     @NotBlank
     @Column(name = "LAST_NAME")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.AuthView.class })
     private String lastName;
 
     @NotNull
     @Email
     @Column(name = "EMAIL")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.AuthView.class })
     private String email;
 
     @NotNull

@@ -1,17 +1,18 @@
 package dev.alomari.service.provider.platform.data.security.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import dev.alomari.service.provider.platform.data.common.jsonviews.View;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
-
 public class UserDetailsImpl implements UserDetails {
     @Getter
+    @JsonView({ View.AuthView.class })
     private User user;
 
-    @JsonIgnore
+    @JsonView({ View.AuthView.class })
     private List<GrantedAuthority> authorities;
 
     public UserDetailsImpl(User user, List<GrantedAuthority> authorities) {
