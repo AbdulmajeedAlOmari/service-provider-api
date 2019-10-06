@@ -1,56 +1,65 @@
 package dev.alomari.service.provider.platform.data.address;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import dev.alomari.service.provider.platform.data.common.entities.AuditingEntity;
+import dev.alomari.service.provider.platform.data.common.jsonviews.View;
+import dev.alomari.service.provider.platform.data.common.validation.groups.Validation;
 import dev.alomari.service.provider.platform.data.security.user.User;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "SPA_ADDRESS")
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class Address extends AuditingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
+    @JsonView({ View.SimpleView.class })
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "FK_USER_ID", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @NotBlank
+    @NotBlank(groups = { Validation.Input.class })
     @Column(name = "LABEL")
+    @JsonView({ View.SimpleView.class })
     private String label;
 
-    @NotBlank
+    @NotNull
     @Column(name = "STATUS")
+    @JsonView({ View.SimpleView.class })
     private AddressStatus status = AddressStatus.ACTIVE;
 
-    @NotBlank
+    @NotBlank(groups = { Validation.Input.class })
     @Column(name = "CITY")
+    @JsonView({ View.SimpleView.class })
     private String city;
 
-    @NotBlank
+    @NotBlank(groups = { Validation.Input.class })
     @Column(name = "COUNTRY")
+    @JsonView({ View.SimpleView.class })
     private String country;
 
-    @NotBlank
+    @NotBlank(groups = { Validation.Input.class })
     @Column(name = "DISTRICT")
+    @JsonView({ View.SimpleView.class })
     private String district;
 
-    @NotBlank
+    @NotBlank(groups = { Validation.Input.class })
     @Column(name = "STREET")
+    @JsonView({ View.SimpleView.class })
     private String street;
 
-    @NotBlank
+    @NotBlank(groups = { Validation.Input.class })
     @Column(name = "HOUSE_NUMBER")
+    @JsonView({ View.SimpleView.class })
     private String houseNumber;
 }

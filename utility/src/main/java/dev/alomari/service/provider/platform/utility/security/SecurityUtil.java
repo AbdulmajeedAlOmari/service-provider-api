@@ -1,5 +1,6 @@
 package dev.alomari.service.provider.platform.utility.security;
 
+import dev.alomari.service.provider.platform.data.common.entities.AuditingEntity;
 import dev.alomari.service.provider.platform.data.security.privilege.Privilege;
 import dev.alomari.service.provider.platform.data.security.role.Role;
 import dev.alomari.service.provider.platform.data.security.user.MyUsernamePasswordAuthenticationToken;
@@ -10,13 +11,20 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 public class SecurityUtil {
+
+    public static void recordAction(AuditingEntity auditingEntity) {
+        User currentUser = getCurrentUser();
+
+        auditingEntity.setActionTakenAt(new Date());
+        auditingEntity.setActionTakenBy("[ " + currentUser.getId() + " ] " + currentUser.getFirstName() + " " + currentUser.getLastName());
+    }
 
     public static Authentication signInUser(User user) {
         List<GrantedAuthority> roles = getAuthorities(user);

@@ -2,7 +2,10 @@ package dev.alomari.service.provider.platform.core.order;
 
 import dev.alomari.service.provider.platform.data.order.Order;
 import dev.alomari.service.provider.platform.data.order.OrderRepository;
+import dev.alomari.service.provider.platform.data.order.OrderStatus;
+import dev.alomari.service.provider.platform.data.security.user.User;
 import dev.alomari.service.provider.platform.utility.constants.Profiles;
+import dev.alomari.service.provider.platform.utility.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
@@ -21,7 +24,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Order addOrder(Order order) {
-        // TODO: Return order from repository instead of null
+        User user = SecurityUtil.getCurrentUser();
+        order.setUser(user);
+        order.setStatus(OrderStatus.PENDING);
+
         return orderRepository.save(order);
     }
 }

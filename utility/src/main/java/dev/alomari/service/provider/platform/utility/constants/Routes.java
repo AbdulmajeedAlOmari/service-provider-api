@@ -12,6 +12,9 @@ public class Routes {
     public static final String INDEX_ROUTE_V1 = API_V1;
     public static final String IS_ALIVE_V1 = "/isAlive";
 
+    /* ----[ Address Routes ]---- */
+    public static final String ADDRESS_ROUTE_V1 = API_V1 + "/addresses";
+
     /* ----[ Order Routes ]---- */
     public static final String ORDER_ROUTE_V1 = API_V1 + "/orders";
 

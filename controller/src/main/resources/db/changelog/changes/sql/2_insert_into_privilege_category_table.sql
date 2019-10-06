@@ -21,3 +21,7 @@ VALUES ('Payments', N'المدفوعات', 'Payment related privileges', N'ال�
 /* Roles */
 INSERT INTO SPA_PRIVILEGE_CATEGORY ( NAME_EN, NAME_AR, DESCRIPTION_EN, DESCRIPTION_AR )
 VALUES ('Roles', N'الأدوار', 'Roles related privileges', N'الصلاحيات المتعلقة بالأدوار');
+
+/* Addresses */
+INSERT INTO SPA_PRIVILEGE_CATEGORY ( NAME_EN, NAME_AR, DESCRIPTION_EN, DESCRIPTION_AR )
+VALUES ('Addresses', N'العناوين', 'Address related privileges', N'الصلاحيات المتعلقة بالعناوين');

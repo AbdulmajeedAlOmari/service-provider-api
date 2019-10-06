@@ -1,6 +1,8 @@
 package dev.alomari.service.provider.platform.data.order.listing;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import dev.alomari.service.provider.platform.data.common.entities.AuditingEntity;
+import dev.alomari.service.provider.platform.data.common.jsonviews.View;
 import dev.alomari.service.provider.platform.data.order.Order;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +22,7 @@ public class Listing extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
+    @JsonView({ View.SimpleView.class })
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -29,6 +32,7 @@ public class Listing extends AuditingEntity {
 
     @NotBlank
     @Column(name = "NAME")
+    @JsonView({ View.SimpleView.class })
     private String name;
 
     @Nullable

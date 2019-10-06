@@ -1,13 +1,12 @@
 package dev.alomari.service.provider.platform.data.common.entities;
 
-import lombok.Setter;
-import lombok.Getter;
+
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
-@Setter
-@Getter
+@Data
 public class ActivatableEntity extends BaseEntity {
 
     @NotNull
