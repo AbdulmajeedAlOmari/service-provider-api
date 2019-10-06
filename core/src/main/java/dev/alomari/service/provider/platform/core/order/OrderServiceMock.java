@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-@Profile(Profiles.MOCK)
 @Service
+@Profile({ Profiles.MOCK })
 public class OrderServiceMock implements OrderService {
     private final OrderRepository orderRepository;
 
