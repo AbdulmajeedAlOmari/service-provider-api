@@ -26,7 +26,7 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @PreAuthorize("hasAuthority('')")
+    @PreAuthorize("hasAuthority('ADDRESSES:ADD')")
     @PostMapping
     @JsonView({ View.SimpleView.class })
     public ResponseEntity<Address> addAddress(@Validated(Validation.Input.class) @RequestBody Address address) {

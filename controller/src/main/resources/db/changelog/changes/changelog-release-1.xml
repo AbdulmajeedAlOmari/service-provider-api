@@ -128,8 +128,8 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="CREATED_AT" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="true"/>
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
@@ -205,8 +205,8 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="CREATED_AT" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="true"/>
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
@@ -218,15 +218,15 @@
             </column>
 
             <column name="CREATED_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_AT" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 
@@ -256,8 +256,8 @@
 
             <column name="COMMENT" type="NVARCHAR(255)" />
 
-            <column name="CREATED_AT" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="true"/>
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
@@ -265,11 +265,11 @@
             </column>
 
             <column name="CREATED_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_AT" type="DATETIME">
@@ -298,8 +298,8 @@
 
             <column name="DETAILS" type="NVARCHAR(255)"/>
 
-            <column name="CREATED_AT" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="true"/>
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
@@ -307,11 +307,11 @@
             </column>
 
             <column name="CREATED_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_AT" type="DATETIME">
@@ -345,8 +345,8 @@
 
             <column name="NOTE" type="NVARCHAR(255)"/>
 
-            <column name="CREATED_AT" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="true"/>
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
@@ -354,15 +354,15 @@
             </column>
 
             <column name="CREATED_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_AT" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 
@@ -392,8 +392,8 @@
 
             <column name="REFERENCE" type="VARCHAR(32)"/>
 
-            <column name="CREATED_AT" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
+            <column name="CREATED_AT" type="DATETIME">
+                <constraints nullable="true"/>
             </column>
 
             <column name="UPDATED_AT" type="DATETIME">
@@ -401,15 +401,15 @@
             </column>
 
             <column name="CREATED_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_BY" type="VARCHAR(64)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
 
             <column name="ACTION_TAKEN_AT" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 

@@ -124,3 +124,14 @@ VALUES (5, 'PAYMENTS:MANAGE_ALL', 'Manage any payment from any user', N'إدار
 /* Roles */
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (6, 'ROLES:PROMOTE_ALL', 'Promote a user to another role', N'ترقية دور أي مستخدم الى دور اخر');
+
+
+/* Addresses */
+INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');
+
+--INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+--VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');
+
+--INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+--VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');

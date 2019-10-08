@@ -1,15 +1,12 @@
 package dev.alomari.service.provider.platform.controller.config;
 
 import dev.alomari.service.provider.platform.utility.constants.Routes;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
@@ -21,6 +18,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().sameOrigin()
                 .and().authorizeRequests()
                 .antMatchers(Routes.INDEX_ROUTE_V1 + Routes.IS_ALIVE_V1).permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(Routes.INDEX_ROUTE_V1 + "/login").not().authenticated()
                 .antMatchers(Routes.INDEX_ROUTE_V1 + "/register").not().authenticated()
                 .anyRequest().authenticated()
