@@ -66,4 +66,10 @@ public class SecurityUtil {
 
         return authorities;
     }
+
+    public static boolean hasAuthority(final String authority) {
+        User currentUser = getCurrentUser();
+        List<GrantedAuthority> userAuthorities = getAuthorities(currentUser);
+        return userAuthorities.stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equalsIgnoreCase(authority));
+    }
 }

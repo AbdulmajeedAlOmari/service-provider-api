@@ -5,6 +5,8 @@ import dev.alomari.service.provider.platform.data.order.OrderRepository;
 import dev.alomari.service.provider.platform.utility.constants.Profiles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,4 +24,13 @@ public class OrderServiceMock implements OrderService {
         return order;
     }
 
+    @Override
+    public Page<Order> listOrders(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Order viewOrder(Long orderId) {
+        return null;
+    }
 }

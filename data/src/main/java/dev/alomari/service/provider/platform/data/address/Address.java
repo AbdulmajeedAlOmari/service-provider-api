@@ -21,7 +21,7 @@ public class Address extends AuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_ID")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -30,36 +30,36 @@ public class Address extends AuditingEntity {
 
     @NotBlank(groups = { Validation.Input.class })
     @Column(name = "LABEL")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private String label;
 
     @NotNull
     @Column(name = "STATUS")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private AddressStatus status = AddressStatus.ACTIVE;
 
     @NotBlank(groups = { Validation.Input.class })
     @Column(name = "CITY")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private String city;
 
     @NotBlank(groups = { Validation.Input.class })
     @Column(name = "COUNTRY")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private String country;
 
     @NotBlank(groups = { Validation.Input.class })
     @Column(name = "DISTRICT")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private String district;
 
     @NotBlank(groups = { Validation.Input.class })
     @Column(name = "STREET")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private String street;
 
     @NotBlank(groups = { Validation.Input.class })
     @Column(name = "HOUSE_NUMBER")
-    @JsonView({ View.SimpleView.class })
+    @JsonView({ View.SimpleView.class, View.DetailedView.class })
     private String houseNumber;
 }

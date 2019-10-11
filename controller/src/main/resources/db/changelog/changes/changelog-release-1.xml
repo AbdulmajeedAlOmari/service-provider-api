@@ -273,7 +273,7 @@
             </column>
 
             <column name="ACTION_TAKEN_AT" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 
@@ -315,7 +315,7 @@
             </column>
 
             <column name="ACTION_TAKEN_AT" type="DATETIME">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 

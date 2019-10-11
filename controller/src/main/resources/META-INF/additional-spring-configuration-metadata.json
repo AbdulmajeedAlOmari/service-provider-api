@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "proposal.max.price",
+      "type": "java.math.BigDecimal",
+      "description": "Max allowed price for proposals."
+    }
+  ]
+}

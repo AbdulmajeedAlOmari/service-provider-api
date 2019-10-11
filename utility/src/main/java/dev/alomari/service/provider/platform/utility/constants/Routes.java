@@ -18,4 +18,7 @@ public class Routes {
     /* ----[ Order Routes ]---- */
     public static final String ORDER_ROUTE_V1 = API_V1 + "/orders";
 
+    /* ----[ Proposal Routes ]---- */
+    public static final String PROPOSAL_ROUTE_V1 = API_V1 + "/proposals";
+
 }
