@@ -130,8 +130,8 @@ VALUES (6, 'ROLES:PROMOTE_ALL', 'Promote a user to another role', N'ترقية �
 INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
 VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');
 
---INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
---VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');
+-- INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+-- VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');
 
---INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
---VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');
+-- INSERT INTO SPA_PRIVILEGE ( FK_PRIVILEGE_CATEGORY_ID, ACTION, NAME_EN, NAME_AR )
+-- VALUES (7, 'ADDRESSES:ADD', 'Add an address to current user', N'إضافة عنوان للمستخدم الحالي');
