@@ -65,8 +65,19 @@ public enum ServiceProviderError {
             "service.provider.api.not.owner.of.information",
             "You are not authorized to view other user's private data",
             HttpStatus.FORBIDDEN
-    )
-    ;
+    ),
+
+    ORDER_IS_ALREADY_UPDATED(
+            9,
+            "service.provider.api.order.already.updated",
+            "Order is not in Pending state",
+            HttpStatus.FORBIDDEN),
+
+    PROPOSAL_IS_ALREADY_UPDATED(
+            10,
+            "service.provider.api.proposal.already.updated",
+            "Proposal is not in Pending state",
+            HttpStatus.FORBIDDEN);
 
     private int code;
     private String key;

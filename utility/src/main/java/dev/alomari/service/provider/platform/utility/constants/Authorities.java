@@ -6,8 +6,11 @@ import lombok.Getter;
 public enum Authorities {
     //@formatter:off
     PROPOSALS_VIEW_ALL(""),
-    ORDERS_VIEW_ALL(""),
-    ORDERS_LIST_ALL(""),
+
+    /* Orders */
+    ORDERS_VIEW_ALL("ORDERS:VIEW_ALL"),
+    ORDERS_LIST_ALL("ORDERS:LIST_ALL"),
+    ORDERS_REPLY_ALL("ORDERS:REPLY_ALL"),
     //@formatter:on
     ;
 
