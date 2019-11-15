@@ -10,4 +10,8 @@ public interface ProposalService {
     Proposal viewProposal(Long proposalId);
 
     Proposal addProposal(Proposal proposal);
+
+    Proposal acceptProposal(Long id);
+
+    Proposal rejectProposal(Long id);
 }

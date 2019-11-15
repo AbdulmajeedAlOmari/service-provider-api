@@ -51,14 +51,14 @@ public class ProposalController {
 
     @PreAuthorize("hasAuthority('PROPOSALS:REPLY')")
     @PutMapping("/{id}/approve")
-    public ResponseEntity<Proposal> approveProposal(@PathVariable Long id) {
-        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+    public ResponseEntity<Proposal> acceptProposal(@PathVariable Long id) {
+        return ResponseEntity.ok(proposalService.acceptProposal(id));
     }
 
     @PreAuthorize("hasAuthority('PROPOSALS:REPLY')")
     @PutMapping("/{id}/reject")
     public ResponseEntity<Proposal> rejectProposal(@PathVariable Long id) {
-        throw new ServiceProviderException(ServiceProviderError.NOT_IMPLEMENTED);
+        return ResponseEntity.ok(proposalService.rejectProposal(id));
     }
 
     @PreAuthorize("hasAuthority('PROPOSALS:REPLY')")

@@ -74,4 +74,35 @@ public class ProposalServiceImpl implements ProposalService {
 
         return proposal;
     }
+
+    @Transactional
+    @Override
+    public Proposal acceptProposal(Long id) {
+        return updateProposalStatus(id, ProposalStatus.ACCEPTED);
+    }
+
+    @Transactional
+    @Override
+    public Proposal rejectProposal(Long id) {
+        return updateProposalStatus(id, ProposalStatus.REJECTED);
+    }
+
+
+    /* ----[ Helper Methods ]---- */
+    /*                            */
+    private Proposal updateProposalStatus(Long id, ProposalStatus newStatus) {
+        Proposal proposal = proposalRepository.findById(id).orElseThrow(
+                () -> new ServiceProviderException(ServiceProviderError.NO_DATA_FOUND)
+        );
+
+        if(!proposal.getStatus().equals(ProposalStatus.PENDING)) {
+            throw new ServiceProviderException(ServiceProviderError.PROPOSAL_IS_ALREADY_UPDATED);
+        }
+
+        proposal.setStatus(newStatus);
+
+        proposalRepository.save(proposal);
+
+        return proposal;
+    }
 }
