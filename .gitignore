@@ -62,6 +62,3 @@ buildNumber.properties
 *.zip
 *.tar.gz
 *.rar
-
-# Properties #
-controller/src/main/resources/application-production.properties
