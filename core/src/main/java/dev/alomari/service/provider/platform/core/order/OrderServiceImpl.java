@@ -73,21 +73,71 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional(readOnly = true)
     public Order viewOrder(Long orderId) {
-        User currentUser = SecurityUtil.getCurrentUser();
+        Order order = getOrderById(orderId);
 
-        Order order = orderRepository.findById(orderId).orElseThrow(
-                () -> new ServiceProviderException(ServiceProviderError.NO_DATA_FOUND)
-        );
-
-        // If user have authority to view any user's order, let them see the order without checking for owner
-        if(SecurityUtil.hasAuthority(Authorities.ORDERS_VIEW_ALL.getAuthority())) {
-            return order;
-        }
-
-        if(!currentUser.getId().equals(order.getUser().getId())) {
-            throw new ServiceProviderException(ServiceProviderError.NOT_OWNER_OF_INFO);
-        }
+        // If user does not have the ability to access information, don't allow them to view it
+        SecurityUtil.validateAbilityToAccessInformation(order.getUser(), Authorities.ORDERS_VIEW_ALL.getAuthority());
 
         return order;
     }
+
+    @Transactional
+    @Override
+    public Order acceptOrder(Long orderId) {
+        Order order = getOrderById(orderId);
+
+        return updateOrderStatus(order, OrderStatus.ACCEPTED);
+    }
+
+    @Transactional
+    @Override
+    public Order rejectOrder(Long orderId) {
+        Order order = getOrderById(orderId);
+
+        return updateOrderStatus(order, OrderStatus.REJECTED);
+    }
+
+    @Transactional
+    @Override
+    public Order cancelOrder(Long orderId) {
+        Order order = getOrderById(orderId);
+
+        if(!SecurityUtil.validateAbilityToAccessInformation(order.getUser(), null)) {
+            throw new ServiceProviderException(ServiceProviderError.NOT_OWNER_OF_INFO);
+        }
+
+        return updateOrderStatus(order, OrderStatus.CANCELED);
+    }
+
+
+    @Override
+    public Order closeOrder(Long orderId) {
+        Order order = getOrderById(orderId);
+
+        return updateOrderStatus(order, OrderStatus.CLOSED);
+    }
+
+
+    /* ----[ Helper Methods ]---- */
+    /*                            */
+    private Order updateOrderStatus(Order order, OrderStatus newStatus) {
+
+        // If order status is not pending do not allow to change it
+        if(!order.getStatus().equals(OrderStatus.PENDING)) {
+            throw new ServiceProviderException(ServiceProviderError.ORDER_IS_ALREADY_UPDATED);
+        }
+
+        order.setStatus(newStatus);
+
+        orderRepository.save(order);
+
+        return order;
+    }
+
+    private Order getOrderById(Long orderId) {
+        return orderRepository.findById(orderId).orElseThrow(
+                () -> new ServiceProviderException(ServiceProviderError.NO_DATA_FOUND)
+        );
+    }
+
 }

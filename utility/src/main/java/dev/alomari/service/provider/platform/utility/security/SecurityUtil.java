@@ -6,6 +6,8 @@ import dev.alomari.service.provider.platform.data.security.role.Role;
 import dev.alomari.service.provider.platform.data.security.user.MyUsernamePasswordAuthenticationToken;
 import dev.alomari.service.provider.platform.data.security.user.User;
 import dev.alomari.service.provider.platform.data.security.user.UserDetailsImpl;
+import dev.alomari.service.provider.platform.utility.exceptions.ServiceProviderError;
+import dev.alomari.service.provider.platform.utility.exceptions.ServiceProviderException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -71,5 +73,35 @@ public class SecurityUtil {
         User currentUser = getCurrentUser();
         List<GrantedAuthority> userAuthorities = getAuthorities(currentUser);
         return userAuthorities.stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equalsIgnoreCase(authority));
+    }
+
+
+    /**
+     *
+     * This method is used to check whether the current user is the same user as the information owner
+     *
+     * @param informationOwner
+     * @param overrideAuthority
+     * @return
+     * - Returns true, if they are the owner of information
+     * - Returns false, if they are not the owner of information but they have overridingAuthority
+     * - Throws ServiceProviderError.NOT_OWNER_OF_INFO if they are not owner of information and do not have overridingAuthority
+     */
+    public static boolean validateAbilityToAccessInformation(User informationOwner, String overrideAuthority) throws ServiceProviderException {
+        User currentUser = SecurityUtil.getCurrentUser();
+        boolean currnetUserHasOverridingAuthority = hasAuthority(overrideAuthority);
+
+        // If user has overriding authority, don't prevent them doing that action
+
+        // Check if the owner is the same as current user
+        if(!informationOwner.getId().equals(currentUser.getId())) {
+            if(currnetUserHasOverridingAuthority) {
+                return false;
+            } else {
+                throw new ServiceProviderException(ServiceProviderError.NOT_OWNER_OF_INFO);
+            }
+        }
+
+        return true;
     }
 }

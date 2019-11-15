@@ -11,4 +11,12 @@ public interface OrderService {
     Order viewOrder(Long orderId);
 
     Page<Order> listOrders(Pageable pageable);
+
+    Order acceptOrder(Long orderId);
+
+    Order rejectOrder(Long orderId);
+
+    Order cancelOrder(Long orderId);
+
+    Order closeOrder(Long orderId);
 }
